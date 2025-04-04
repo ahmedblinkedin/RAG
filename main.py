@@ -1,11 +1,9 @@
 import gradio as gr
 import ollama
-from bs4 import BeautifulSoup as bs
 from gradio_pdf import PDF
-from langchain_community.document_loaders import WebBaseLoader, PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import OllamaEmbeddings
-from pathlib import Path
 
 # Load the data from the pdf
 
@@ -39,8 +37,7 @@ def get_important_facts(question,doc):
     return rag_chain(question)
 
 
-dir_ = Path(__file__)
-print(dir_)
+
 # Create a Gradio app interface
 demo = gr.Interface(
     get_important_facts,
